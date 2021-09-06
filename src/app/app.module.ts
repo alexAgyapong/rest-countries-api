@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { CountryListComponent } from './countries/country-list/country-list.component';
+import { CountryCardComponent } from './countries/country-card/country-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    CountryListComponent
+    CountryListComponent,
+    CountryCardComponent
   ],
   imports: [
     BrowserModule,
