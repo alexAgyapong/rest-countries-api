@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { CountryListComponent } from './countries/country-list/country-list.component';
 import { CountryCardComponent } from './countries/country-card/country-card.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CountryCardComponent } from './countries/country-card/country-card.comp
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
