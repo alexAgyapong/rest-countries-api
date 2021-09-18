@@ -1,1 +1,7 @@
-<p>search works!</p>
+<form [formGroup]="searchForm" autocomplete="off">
+    <div class="search-input">
+        <ion-icon class="input-field-icon" name="search-outline"></ion-icon>
+        <input class="form-control input-field" type="search" name="searchTerm" id="searchTerm"
+            formControlName="searchTerm" placeholder="Search for a country...">
+    </div>
+</form>

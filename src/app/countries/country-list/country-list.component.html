@@ -1,8 +1,9 @@
 <div class="container mt-5">
     <div class="d-flex flex-column flex-sm-row justify-content-between mb-5">
-        <app-search></app-search>
+        <app-search (searchTerm)="onSearch($event)"></app-search>
         <app-filter></app-filter>
     </div>
+    <div *ngIf="!(countries$|async)">No results for {{searchTerm}}</div>
     <div class="cards">
         <app-country-card *ngFor="let country of countries$|async" [country]="country"></app-country-card>
     </div>

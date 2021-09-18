@@ -1,7 +1,8 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchComponent } from './search/search.component';
 import { FilterComponent } from './filter/filter.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -11,8 +12,10 @@ import { FilterComponent } from './filter/filter.component';
     FilterComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
-  exports: [SearchComponent, FilterComponent]
+  exports: [SearchComponent, FilterComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SharedModule { }

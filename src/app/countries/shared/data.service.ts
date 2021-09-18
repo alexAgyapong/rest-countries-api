@@ -15,4 +15,10 @@ export class DataService {
     const url = `${environment.baseUrl}/all`;
     return this.http.get<Country[]>(url);
   }
+
+  getCountriesByName(name: string): Observable<Country[]> {
+    const url = `${environment.baseUrl}/name/${name}`;
+    return this.http.get<Country[]>(url);
+  }
+  
 }
