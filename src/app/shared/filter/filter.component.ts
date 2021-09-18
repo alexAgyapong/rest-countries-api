@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-filter',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent implements OnInit {
+  @Output() selectedRegion = new EventEmitter<string>();
 
-  constructor() { }
+  regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+  filterForm!: FormGroup;
+
+  constructor(private readonly formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.filterForm = this.formBuilder.group({ region: [''] });
+
+    this.filterForm.valueChanges
+      .subscribe((input: { region: string }) => this.selectedRegion.emit(input.region));
   }
 
 }

@@ -23,6 +23,15 @@ export class CountryListComponent implements OnInit {
     searchTerm ? this.getCountriesByName(searchTerm) : this.getAllCountries();
   }
 
+  onFilter(region: string): void {
+    console.log({ region });
+    region ? this.getCountriesByRegion(region) : this.getAllCountries();
+  }
+
+  private getCountriesByRegion(region: string) {
+    this.countries$ = this.dataService.getCountriesByRegion(region);
+  }
+
   private getAllCountries() {
     this.countries$ = this.dataService.getAllCountries();
   }

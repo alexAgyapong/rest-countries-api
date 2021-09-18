@@ -1,1 +1,6 @@
-<p>filter works!</p>
+<form [formGroup]="filterForm">
+    <select class="form-select" formControlName="region">
+        <option value="">Filter by Region</option>
+        <option *ngFor="let region of regions" [value]="region">{{region}}</option>
+    </select>
+</form>
