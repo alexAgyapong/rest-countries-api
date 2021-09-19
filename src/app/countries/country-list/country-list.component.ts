@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { finalize, tap } from 'rxjs/operators';
+import { finalize } from 'rxjs/operators';
 import { DataService } from '../shared/data.service';
 import { Country } from '../shared/models/country';
 
@@ -32,18 +32,18 @@ export class CountryListComponent implements OnInit {
   private getCountriesByRegion(region: string) {
     this.isLoading = true;
     this.countries$ = this.dataService.getCountriesByRegion(region)
-      .pipe(tap(() => this.isLoading = false));
+      .pipe(finalize(() => this.isLoading = false));
   }
 
   private getAllCountries() {
     this.isLoading = true;
     this.countries$ = this.dataService.getAllCountries()
-      .pipe(tap(() => this.isLoading = false));
+      .pipe(finalize(() => this.isLoading = false));
   }
 
   private getCountriesByName(searchTerm: string) {
     this.isLoading = true;
     this.countries$ = this.dataService.getCountriesByName(searchTerm)
-      .pipe(tap(() => this.isLoading = false));
+      .pipe(finalize(() => this.isLoading = false));
   }
 }
