@@ -3,19 +3,21 @@ import { CommonModule } from '@angular/common';
 import { SearchComponent } from './search/search.component';
 import { FilterComponent } from './filter/filter.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component';
 
 
 
 @NgModule({
   declarations: [
     SearchComponent,
-    FilterComponent
+    FilterComponent,
+    LoadingIndicatorComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule
   ],
-  exports: [SearchComponent, FilterComponent],
+  exports: [SearchComponent, FilterComponent, LoadingIndicatorComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SharedModule { }

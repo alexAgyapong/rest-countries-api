@@ -1,10 +1,11 @@
 <div class="container mt-5">
-    <div class="d-flex flex-column flex-sm-row justify-content-between mb-5">
-        <app-search (searchTerm)="onSearch($event)"></app-search>
-        <app-filter (selectedRegion)="onFilter($event)"></app-filter>
-    </div>
-    <!-- <div *ngIf="!(countries$|async)">No results for {{searchTerm}}</div> -->
-    <div class="cards">
-        <app-country-card *ngFor="let country of countries$|async" [country]="country"></app-country-card>
-    </div>
+  <div class="d-flex flex-column flex-sm-row justify-content-between mb-5">
+    <app-search (searchTerm)="onSearch($event)"></app-search>
+    <app-filter (selectedRegion)="onFilter($event)"></app-filter>
+  </div>
+  <div *ngIf="!(countries$|async)">No results for {{searchTerm}}</div>
+  <div class="cards">
+    <app-country-card *ngFor="let country of countries$|async" [country]="country"></app-country-card>
+  </div>
+  <app-loading-indicator *ngIf="isLoading"></app-loading-indicator>
 </div>
