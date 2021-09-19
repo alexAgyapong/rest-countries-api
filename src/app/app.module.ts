@@ -8,13 +8,15 @@ import { HeaderComponent } from './header/header.component';
 import { CountryListComponent } from './countries/country-list/country-list.component';
 import { CountryCardComponent } from './countries/country-card/country-card.component';
 import { SharedModule } from './shared/shared.module';
+import { CountryDetailComponent } from './countries/country-detail/country-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     CountryListComponent,
-    CountryCardComponent
+    CountryCardComponent,
+    CountryDetailComponent
   ],
   imports: [
     BrowserModule,

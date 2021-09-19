@@ -1,0 +1,12 @@
+:host{
+    font-size: 16px;
+}
+
+.btn-custom {
+    background-color: var(--elements-color);
+    color: inherit;
+    box-shadow: 0 0 2px 1px rgb(0, 0, 0, 0.2);
+    &:hover {
+      color: inherit;
+    }
+} 
