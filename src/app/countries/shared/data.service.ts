@@ -26,4 +26,9 @@ export class DataService {
     return this.http.get<Country[]>(url);
   }
 
+  getCountryDetails(code: string): Observable<Country> {
+    const url = `${environment.baseUrl}/alpha/${code}`;
+    return this.http.get<Country>(url);
+  }
+
 }
