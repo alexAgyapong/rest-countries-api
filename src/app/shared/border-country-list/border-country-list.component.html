@@ -1,0 +1,12 @@
+<ng-container *ngIf="borders">
+    <div class="d-flex flex-column flex-sm-row align-items-sm-center mt-5">
+        <span>Border countries: </span>
+        <span class="ms-sm-3">
+            <ng-container *ngFor="let border of borders">
+                <a role="button" class="btn btn-custom mx-1 mb-2"
+                    [routerLink]="['/detail', border?.code]">{{border?.name}}
+                </a>
+            </ng-container>
+        </span>
+    </div>
+</ng-container>

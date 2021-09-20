@@ -31,6 +31,11 @@ export interface RegionalBloc {
     otherNames: string[];
 }
 
+export interface BorderCountry {
+    name: string;
+    code: string;
+}
+
 export interface Country {
     name: string;
     topLevelDomain: string[];

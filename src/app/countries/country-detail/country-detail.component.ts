@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../shared/data.service';
 import { Observable } from 'rxjs';
-import { Country } from '../shared/models/country';
+import { BorderCountry, Country } from '../shared/models/country';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-country-detail',
@@ -12,6 +13,7 @@ import { Country } from '../shared/models/country';
 })
 export class CountryDetailComponent implements OnInit {
   country$ = new Observable<Country>();
+  borders$ = new Observable<BorderCountry[]>();
 
   constructor(private readonly location: Location,
     private readonly route: ActivatedRoute,
@@ -23,9 +25,16 @@ export class CountryDetailComponent implements OnInit {
 
   getCountryDetails(code: string): void {
     this.country$ = this.dataService.getCountryDetails(code)
+      .pipe(tap(data => this.getBorderCountries(data.borders)));
   }
 
   back(): void {
     this.location.back();
+  }
+
+  private getBorderCountries(codes: string[]): void {
+    if (codes.length) {
+      this.borders$ = this.dataService.getBorderCountries(codes);
+    }
   }
 }

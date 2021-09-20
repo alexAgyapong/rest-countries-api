@@ -4,6 +4,8 @@ import { SearchComponent } from './search/search.component';
 import { FilterComponent } from './filter/filter.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component';
+import { BorderCountryListComponent } from './border-country-list/border-country-list.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -11,13 +13,20 @@ import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator
   declarations: [
     SearchComponent,
     FilterComponent,
-    LoadingIndicatorComponent
+    LoadingIndicatorComponent,
+    BorderCountryListComponent
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
-  exports: [SearchComponent, FilterComponent, LoadingIndicatorComponent],
+  exports: [
+    SearchComponent,
+    FilterComponent,
+    LoadingIndicatorComponent,
+    BorderCountryListComponent
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SharedModule { }

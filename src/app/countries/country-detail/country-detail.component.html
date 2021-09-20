@@ -1,9 +1,47 @@
 <div class="container mt-5">
     <button class="btn btn-custom mb-5" (click)="back()">
         <span class="d-flex align-items-center">
-          <ion-icon class="me-2" name="arrow-back-outline"></ion-icon> Back
+            <ion-icon class="me-2" name="arrow-back-outline"></ion-icon> Back
         </span>
-      </button>
+    </button>
 
-      {{country$|async|json}}
+    <ng-container *ngIf="country$|async as country">
+        <div class="d-flex flex-column flex-sm-row align-items-sm-center">
+            <div class="col-sm-4"><img [src]="country.flag"></div>
+            <section class="col-sm-8 ms-sm-5">
+                <h5 class="title my-4">{{country.name}}</h5>
+                <div class="d-flex flex-column flex-sm-row">
+                    <div>
+                        <p><span class="label">Native Name: </span>{{country.name}}</p>
+                        <p><span class="label">Population: </span>{{country.population|number}}</p>
+                        <p><span class="label">Region: </span>{{country.region}}</p>
+                        <p><span class="label">Sub Region: </span>{{country.subregion}}</p>
+                        <p *ngIf="country.capital"><span class="label">Capital: </span>{{country.capital}}</p>
+                    </div>
+                    <div class="ms-sm-5 mt-5 mt-sm-0">
+                        <p><span class="label">Top Level Domains: </span>{{country.topLevelDomain[0]}}</p>
+                        <p>
+                            <span class="label">Currencies: </span>
+                            <span *ngFor="let currency of country.currencies">{{currency.name}}</span>
+                        </p>
+                        <p>
+                            <span class="label">Languages: </span>
+                            <span *ngFor="let lang of country.languages; last as isLast">
+                                <ng-container *ngIf="!isLast; else lastLanguage">
+                                    {{lang.name}},
+                                </ng-container>
+                                <ng-template #lastLanguage>
+                                    {{lang.name}}
+                                </ng-template>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <app-border-country-list *ngIf="borders$ | async as borders" [borders]="borders">
+                </app-border-country-list>
+            </section>
+        </div>
+
+    </ng-container>
+
 </div>

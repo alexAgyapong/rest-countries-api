@@ -42,6 +42,21 @@ a:hover {
   font-weight: 600;
 }
 
+//Buttons
+.btn-custom {
+  background-color: var(--elements-color);
+  color: inherit;
+  box-shadow: 0 0 2px 1px rgb(0, 0, 0, 0.2);
+  &:hover {
+    color: inherit;
+  }
+  &:active,
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
 // Bootstrap Overrides
 .form-control,
 .form-select {

@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { Country } from './models/country';
+import { BorderCountry, Country } from './models/country';
 
 @Injectable({
   providedIn: 'root'
@@ -31,4 +32,14 @@ export class DataService {
     return this.http.get<Country>(url);
   }
 
+  getBorderCountries(codes: string[]): Observable<BorderCountry[]> {
+    const params = new HttpParams().append('codes', codes.join(';'));
+    const url = `${environment.baseUrl}/alpha`;
+    return this.http.get<Country[]>(url, { params })
+      .pipe(
+        map(response => response.map((c: Country) => ({
+          name: c.name,
+          code: c.alpha3Code
+        }) as BorderCountry)))
+  }
 }
